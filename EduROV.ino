@@ -20,7 +20,7 @@
 //Motor Izquierdo
 #define pinA_2      5      // Pin 12 del L293D (IN3)
 #define pinB_2      6      // Pin 19 del L293D (IN4)
- #define pinPWM_2    PIN_SIN_DEFINIR       // Pin 11 del L293D (ENABLE2)
+#define pinPWM_2    PIN_SIN_DEFINIR       // Pin 11 del L293D (ENABLE2)
 
 //Motor Vertical
 #define pinA_3      7      // Pin 12 del L293D (IN3)
@@ -38,12 +38,12 @@ Motor motorVertical(pinA_3, pinB_3, pinPWM_3);
 #define MANDO_PROFUNDIDAD_PIN_X     A0  // VRx del mando a pin analogico A0 del arduino
 #define MANDO_PROFUNDIDAD_PIN_Y     A1  // VRy del mando a pin analogico A1 del Arduino
 #define MANDO_PROFUNDIDAD_PIN_P1    PIN_SIN_DEFINIR   // SW  del mando a pin digital 8 del Arduino
-#define MANDO_PROFUNDIDAD_CONF      CONF_MANDO_POR_DEFECTO
+#define MANDO_PROFUNDIDAD_CONF      CONF_MANDO_POR_DEFECTO  // por si queremos invertir el mando
 
 #define MANDO_AVANCE_PIN_X     A2  // VRx del mando a pin analogico A2 del arduino
 #define MANDO_AVANCE_PIN_Y     A3  // VRy del mando a pin analogico A3 del Arduino
 #define MANDO_AVANCE_PIN_P1    PIN_SIN_DEFINIR   // SW  del mando a pin digital 9 del Arduino
-#define MANDO_AVANCE_CONF      CONF_MANDO_POR_DEFECTO
+#define MANDO_AVANCE_CONF      CONF_MANDO_POR_DEFECTO       // por si queremos invertir el mando
 
 // Configuración alternativa
 // (probar a combinar diferentes CONF_MANDO_XXXX) definidos en mando.h
@@ -61,7 +61,7 @@ accion_mando_t estadoMandoAvance = ACCION_MANDO_PARAR;
 
 void controlMandoProfundidad() {
     accion_mando_t estadoActualDelMando = mandoProfundidad.getAccion();
-    if (estadoMandoProfundidad != estadoActualDelMando) {
+    if (estadoMandoProfundidad != estadoActualDelMando) { // comprobamos si ha cambiado de estado
         estadoMandoProfundidad = estadoActualDelMando;
         switch (mandoProfundidad.getAccion()) {
             ACCION_MANDO_AVANZAR :
@@ -85,7 +85,7 @@ void controlMandoProfundidad() {
 
 void controlMandoAvance() {
     accion_mando_t estadoActualDelMando = mandoAvance.getAccion();
-    if (estadoMandoAvance != estadoActualDelMando) {
+    if (estadoMandoAvance != estadoActualDelMando) { // comprobamos si ha cambiado de estado
         estadoMandoAvance = estadoActualDelMando;
         switch (estadoMandoAvance) {
             ACCION_MANDO_PARAR :
@@ -126,6 +126,3 @@ void loop() {
      controlMandoProfundidad();
      controlMandoAvance();
 }
-
-
-
