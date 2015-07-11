@@ -53,8 +53,8 @@ Motor motorVertical(pinA_3, pinB_3, pinPWM_3);
 
 
 
-Mando mandoProfundidad(MANDO_PROFUNDIDAD_PIN_X, MANDO_PROFUNDIDAD_PIN_Y, MANDO_PROFUNDIDAD_PIN_P1, MANDO_PROFUNDIDAD_CONF);
-Mando mandoAvance(MANDO_AVANCE_PIN_X, MANDO_AVANCE_PIN_Y, MANDO_AVANCE_PIN_P1, MANDO_AVANCE_CONF);
+Mando mandoProfundidad(MANDO_PROFUNDIDAD_PIN_X, MANDO_PROFUNDIDAD_PIN_Y, MANDO_PROFUNDIDAD_PIN_P1);
+Mando mandoAvance(MANDO_AVANCE_PIN_X, MANDO_AVANCE_PIN_Y, MANDO_AVANCE_PIN_P1);
 
 accion_mando_t estadoMandoProfundidad = ACCION_MANDO_PARAR;
 accion_mando_t estadoMandoAvance = ACCION_MANDO_PARAR;
@@ -81,6 +81,7 @@ void controlMandoProfundidad() {
                 break;
         }
     }
+}
 
 void controlMandoAvance() {
     accion_mando_t estadoActualDelMando = mandoAvance.getAccion();
@@ -116,7 +117,8 @@ void controlMandoAvance() {
 }
 
 void setup() {
-
+    mandoProfundidad.init(MANDO_PROFUNDIDAD_CONF);
+    mandoAvance.init(MANDO_AVANCE_CONF);
 }
 
 
