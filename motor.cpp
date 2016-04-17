@@ -25,7 +25,8 @@ void Motor::avanzar() {
     digitalWrite(this->pinA, HIGH);
     digitalWrite(this->pinB, LOW);
     if (this->pinPWM >= 0) {
-        digitalWrite(this->pinPWM, 255);
+        // digitalWrite(this->pinPWM, HIGH);
+        analogWrite(this->pinPWM, 255);
     }
 }
 
@@ -33,7 +34,8 @@ void Motor::retroceder() {
     digitalWrite(this->pinA, LOW);
     digitalWrite(this->pinB, HIGH);
     if (this->pinPWM >= 0) {
-        digitalWrite(this->pinPWM, 255);
+      // digitalWrite(this->pinPWM, HIGH);
+      analogWrite(this->pinPWM, 255);
     }
 }
 
@@ -41,8 +43,6 @@ void Motor::parar() {
     digitalWrite(this->pinA, LOW);
     digitalWrite(this->pinB, LOW);
     if (this->pinPWM >= 0) {
-        digitalWrite(this->pinPWM, 0);
+        digitalWrite(this->pinPWM, LOW);
     }
 }
-
-

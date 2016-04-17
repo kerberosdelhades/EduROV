@@ -16,4 +16,4 @@ class Motor {
         void parar();
         Motor(int8_t pinA, int8_t pinB, int8_t pinPWM = -1);
 };
-#endif __MOTOR_H__
+#endif //__MOTOR_H__
